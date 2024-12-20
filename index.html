@@ -19,7 +19,7 @@
             <!-- Right: Login Form -->
             <div class="lg:p-36 md:p-20 p-8 w-full lg:w-1/2">
                 <h1 class="text-2xl font-bold text-gray-700 mb-6">Login to IP College LinkedIn</h1>
-                <form action="./home.html" method="POST">
+                <form id="loginForm" onsubmit="handleLogin(event)">
                     <!-- Username Input -->
                     <div class="mb-4">
                         <label for="username" class="block text-gray-600">Username</label>
@@ -65,10 +65,34 @@
     </main>
 
     <script>
+        // Toggle password visibility
         function togglePassword() {
             const passwordField = document.getElementById('password');
             const type = passwordField.type === 'password' ? 'text' : 'password';
             passwordField.type = type;
+        }
+
+        // Handle login form submission
+        function handleLogin(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Get form data
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Check if inputs are valid
+            if (!username || !password) {
+                alert('Please fill in both username and password.');
+                return;
+            }
+
+            // Example logic for login (replace with your actual logic)
+            if (username === 'testuser' && password === 'testpass') {
+                alert('Login successful!');
+                window.location.href = './public/home.html'; // Redirect to home page
+            } else {
+                alert('Invalid username or password.');
+            }
         }
     </script>
 </body>
